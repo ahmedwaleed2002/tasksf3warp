@@ -2,3 +2,7 @@
 [2025-07-09T09:38:16.764Z] SUCCESS: Created userFile.txt with user input
 [2025-07-09T09:38:23.531Z] INFO: Displayed system information
 [2025-07-09T09:38:36.180Z] INFO: Application exited
+[2025-07-09T09:40:31.059Z] INFO: Application started
+[2025-07-09T09:40:48.454Z] SUCCESS: Created userFile.txt with user input
+[2025-07-09T09:40:51.062Z] INFO: Displayed system information
+[2025-07-09T09:42:39.378Z] INFO: Application exited

@@ -7,6 +7,7 @@ A Node.js CLI application that provides file creation, operation logging, and sy
 1. **File Creation**: Create a file (`userFile.txt`) with user-provided text input
 2. **Operation Logging**: Log all operations with timestamps to `operationLogs.txt`
 3. **System Information**: Display platform, memory usage, and CPU core count
+4. **View Logs**: Display all logged operations with timestamps
 
 ## Usage
 
@@ -23,7 +24,8 @@ A Node.js CLI application that provides file creation, operation logging, and sy
 3. Choose from the menu options:
    - **Option 1**: Create a file - Enter text to create `userFile.txt`
    - **Option 2**: View system information - Display OS details
-   - **Option 3**: Exit the application
+   - **Option 3**: View logs - Display all operation logs with timestamps
+   - **Option 4**: Exit the application
 
 ## Files Created
 

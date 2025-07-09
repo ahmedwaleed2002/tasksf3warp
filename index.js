@@ -38,6 +38,18 @@ function createFile() {
 }
 
 // Function to display system information
+function viewLogs() {
+  fs.readFile('operationLogs.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading log file:', err);
+    } else {
+      console.log('\n=== Operation Logs ===\n');
+      console.log(data);
+      console.log('=======================\n');
+    }
+    showMenu();
+  });
+}
 function showSystemInfo() {
   console.log('\n=== System Information ===');
   console.log(`Platform: ${os.platform()}`);
@@ -54,8 +66,9 @@ function showSystemInfo() {
 function showMenu() {
   console.log('\n=== Day 3 CLI App ===');
   console.log('1. Create a file');
-  console.log('2. View system information');
-  console.log('3. Exit');
+console.log('2. View system information');
+  console.log('3. View logs');
+  console.log('4. Exit');
   
   rl.question('Choose an option (1-3): ', (choice) => {
     switch (choice) {
@@ -65,7 +78,10 @@ function showMenu() {
       case '2':
         showSystemInfo();
         break;
-      case '3':
+case '3':
+        viewLogs();
+        break;
+      case '4':
         console.log('Goodbye!');
         logOperation('INFO: Application exited');
         rl.close();
