@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const readline = require('readline');
+const { exec } = require('child_process');
 
 // Create readline interface for user input
 const rl = readline.createInterface({
@@ -37,6 +38,40 @@ function createFile() {
   });
 }
 
+// Function to commit changes to git
+function commitToGit() {
+  rl.question('Enter commit message: ', (commitMessage) => {
+    if (!commitMessage.trim()) {
+      console.log('Commit message cannot be empty!');
+      showMenu();
+      return;
+    }
+    
+    // Add all files to git
+    exec('git add .', (error, stdout, stderr) => {
+      if (error) {
+        console.error('Error adding files to git:', error.message);
+        logOperation('ERROR: Failed to add files to git');
+        showMenu();
+        return;
+      }
+      
+      // Commit with the provided message
+      exec(`git commit -m "${commitMessage}"`, (error, stdout, stderr) => {
+        if (error) {
+          console.error('Error committing to git:', error.message);
+          logOperation('ERROR: Failed to commit to git');
+        } else {
+          console.log('Successfully committed to git!');
+          console.log(stdout);
+          logOperation(`SUCCESS: Git commit with message: ${commitMessage}`);
+        }
+        showMenu();
+      });
+    });
+  });
+}
+
 // Function to display system information
 function viewLogs() {
   fs.readFile('operationLogs.txt', 'utf8', (err, data) => {
@@ -68,9 +103,10 @@ function showMenu() {
   console.log('1. Create a file');
 console.log('2. View system information');
   console.log('3. View logs');
-  console.log('4. Exit');
+  console.log('4. Git commit');
+  console.log('5. Exit');
   
-  rl.question('Choose an option (1-3): ', (choice) => {
+  rl.question('Choose an option (1-5): ', (choice) => {
     switch (choice) {
       case '1':
         createFile();
@@ -82,6 +118,9 @@ case '3':
         viewLogs();
         break;
       case '4':
+        commitToGit();
+        break;
+      case '5':
         console.log('Goodbye!');
         logOperation('INFO: Application exited');
         rl.close();
