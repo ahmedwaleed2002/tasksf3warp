@@ -1,0 +1,4 @@
+[2025-07-09T09:37:57.650Z] INFO: Application started
+[2025-07-09T09:38:16.764Z] SUCCESS: Created userFile.txt with user input
+[2025-07-09T09:38:23.531Z] INFO: Displayed system information
+[2025-07-09T09:38:36.180Z] INFO: Application exited
